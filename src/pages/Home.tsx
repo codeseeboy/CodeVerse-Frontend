@@ -26,14 +26,12 @@ const features = [
 const codeSnippets = [
   { lang: 'Python', code: 'print("Hello, World!")', output: 'Hello, World!' },
   { lang: 'JavaScript', code: 'console.log("Hello, World!");', output: 'Hello, World!' },
-  { lang: 'C', code: '#include <stdio.h>\nint main() { printf("Hello, World!\\n"); return 0; }', output: 'Hello, World!' },
-  { lang: 'C++', code: '#include <iostream>\nint main() { std::cout << "Hello, World!\\n"; return 0; }', output: 'Hello, World!' },
   { lang: 'Poetic', code: 'print("Code in joy,\nCode with minds,\nCreate with code,\nBuild your future.")', output: 'Code in joy,\nCode with minds,\nCreate with code,\nBuild your future.' },
 ];
 
 const typewriterWords = [
-  'Python', 'JavaScript', 'C', 'C++',
-  'Code in joy', 'Code with minds',
+  'Python', 'JavaScript', 
+  'in joy', 'Code with minds',
   'Create with code', 'Build your future',
   'Learn to code', 'Master programming',
   'Start coding now'
