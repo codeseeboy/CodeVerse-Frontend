@@ -13,7 +13,10 @@ export default function Layout() {
                 <circle cx="14" cy="14" r="14" fill="#6366F1"/>
                 <text x="50%" y="55%" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="bold" dy=".3em" fontFamily="monospace">CV</text>
               </svg>
-              <span className="font-bold text-lg tracking-tight">CodeVerse</span>
+              <span className="font-bold text-lg tracking-tight">
+                <span className="text-2xl font-bold text-blue-600 font-mono">e</span>
+                <span className="tracking-wider">ditie</span>
+              </span>
             </Link>
             <nav className="hidden md:flex gap-6">
               <Link to="/editor" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">

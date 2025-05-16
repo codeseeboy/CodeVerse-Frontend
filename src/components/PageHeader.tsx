@@ -23,7 +23,10 @@ export function PageHeader({ title, showBackButton = true, backTo = '/' }: PageH
           )}
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Globe2 className="h-6 w-6 text-primary" />
-            <span className="font-semibold text-lg hidden sm:inline">CodeVerse</span>
+            <span className="font-semibold text-lg hidden sm:inline">
+              <span className="text-2xl font-bold text-blue-600 font-mono">e</span>
+              <span className="tracking-wider">ditie</span>
+            </span>
           </Link>
         </div>
         {title && (
