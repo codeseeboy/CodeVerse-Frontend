@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Globe2, BookOpen, Zap, Lightbulb, Terminal, Sparkles, ArrowRight, PlayCircle } from 'lucide-react';
+import { Globe2, BookOpen, Zap, Terminal, ArrowRight, PlayCircle } from 'lucide-react';
 import { PageHeader } from '@/components/PageHeader';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';

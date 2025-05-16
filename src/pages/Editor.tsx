@@ -62,6 +62,7 @@ function CodeEditorContent() {
   });
   const navigate = useNavigate();
   const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const lang = language;
@@ -134,7 +135,7 @@ function CodeEditorContent() {
   }, [monacoInstance]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/languages')
+    fetch(`${API_URL}/languages`)
       .then(res => res.json())
       .then(data => {
         setAvailableLanguages(data.languages || []);
@@ -161,7 +162,7 @@ function CodeEditorContent() {
     setOutput('Running...\n');
 
     try {
-      const response = await fetch('http://localhost:5000/run', {
+      const response = await fetch(`${API_URL}/run`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
