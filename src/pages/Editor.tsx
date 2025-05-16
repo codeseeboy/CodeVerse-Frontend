@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Play, ArrowLeft, Lightbulb, Trash2, Save, Loader2, Code, Settings, Download, Upload, Maximize2, Minimize2, Sun, Moon, ArrowUp, RotateCcw } from 'lucide-react';
+import { Play, ArrowLeft, Trash2, Save, Loader2, Code, Download, Upload, Maximize2, Minimize2, Sun, Moon, ArrowUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Editor, { Monaco } from '@monaco-editor/react';
 import { useToast } from '@/components/ui/use-toast';
@@ -10,7 +10,6 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import { useTheme } from '@/components/theme-provider';
 import { PageHeader } from '@/components/PageHeader';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { tutorials } from '@/data/tutorialData';
 
 const languageOptions = [
@@ -68,8 +67,8 @@ function CodeEditorContent() {
     const lang = language;
     if (tutorialId && lang) {
       const tut = tutorials.find(t => t.id === tutorialId);
-      if (tut && tut.code[lang]) {
-        setCode(tut.code[lang]);
+      if (tut && tut.code[lang as keyof typeof tut.code]) {
+        setCode(tut.code[lang as keyof typeof tut.code]);
         return;
       }
     }
@@ -114,7 +113,7 @@ function CodeEditorContent() {
         // Add the keybinding
         editorRef.current.addCommand(
           monacoInstance.KeyMod.CtrlCmd | monacoInstance.KeyCode.Enter,
-          commandId
+          () => runCode()
         );
 
         return () => {
@@ -123,7 +122,7 @@ function CodeEditorContent() {
       } catch (error) {
         console.error('Failed to register editor command:', error);
         // Fallback to a simpler approach if command registration fails
-        const disposable = editorRef.current.onKeyDown((e) => {
+        const disposable = editorRef.current.onKeyDown((e: any) => {
           if ((e.ctrlKey || e.metaKey) && e.code === 'Enter') {
             e.preventDefault();
             runCode();

@@ -6,7 +6,13 @@ import { cn } from "@/lib/utils";
 const Select = SelectPrimitive.Root;
 const SelectGroup = SelectPrimitive.Group;
 const SelectValue = SelectPrimitive.Value;
-const SelectTrigger = React.forwardRef(
+
+interface SelectTriggerProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
   ({ className, children, ...props }, ref) => (
     <SelectPrimitive.Trigger
       ref={ref}
@@ -25,7 +31,12 @@ const SelectTrigger = React.forwardRef(
 );
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
-const SelectContent = React.forwardRef(
+interface SelectContentProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
   ({ className, children, ...props }, ref) => (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -43,7 +54,12 @@ const SelectContent = React.forwardRef(
 );
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
-const SelectItem = React.forwardRef(
+interface SelectItemProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   ({ className, children, ...props }, ref) => (
     <SelectPrimitive.Item
       ref={ref}

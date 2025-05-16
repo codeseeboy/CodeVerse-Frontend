@@ -42,7 +42,7 @@ const defaultCode = {
 
 export const useEditorStore = create<EditorState>()(
   persist(
-    (set) => ({
+    (set: (state: Partial<EditorState>) => void) => ({
       code: defaultCode.python,
       language: 'python',
       input: '',
@@ -52,17 +52,17 @@ export const useEditorStore = create<EditorState>()(
       theme: defaultTheme,
       isTutorialMode: false,
       currentTutorialStep: undefined,
-      setCode: (code) => set({ code }),
-      setLanguage: (language) => set({ language, code: defaultCode[language] }),
-      setInput: (input) => set({ input }),
-      setOutput: (output) => set({ output, error: undefined }),
-      setError: (error) => set({ error, output: '' }),
-      setIsRunning: (isRunning) => set({ isRunning }),
-      setTheme: (theme) => set({ theme }),
-      setActiveSnippet: (activeSnippet) => set({ activeSnippet }),
-      setUser: (user) => set({ user }),
-      setIsTutorialMode: (isTutorialMode) => set({ isTutorialMode }),
-      setCurrentTutorialStep: (currentTutorialStep) => set({ currentTutorialStep }),
+      setCode: (code: string) => set({ code }),
+      setLanguage: (language: Language) => set({ language, code: defaultCode[language] }),
+      setInput: (input: string) => set({ input }),
+      setOutput: (output: string) => set({ output, error: undefined }),
+      setError: (error?: string) => set({ error, output: '' }),
+      setIsRunning: (isRunning: boolean) => set({ isRunning }),
+      setTheme: (theme: Theme) => set({ theme }),
+      setActiveSnippet: (activeSnippet?: CodeSnippet) => set({ activeSnippet }),
+      setUser: (user?: User) => set({ user }),
+      setIsTutorialMode: (isTutorialMode: boolean) => set({ isTutorialMode }),
+      setCurrentTutorialStep: (currentTutorialStep?: number) => set({ currentTutorialStep }),
       resetEditor: () =>
         set({
           code: defaultCode.python,
@@ -76,7 +76,7 @@ export const useEditorStore = create<EditorState>()(
     }),
     {
       name: 'code-editor-storage',
-      partialize: (state) => ({
+      partialize: (state: EditorState) => ({
         theme: state.theme,
         language: state.language,
         activeSnippet: state.activeSnippet,

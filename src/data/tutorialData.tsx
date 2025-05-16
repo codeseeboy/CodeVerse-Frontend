@@ -1,4 +1,3 @@
-import React from 'react';
 import { Terminal, FileCode, Lightbulb, Zap, BookOpen } from 'lucide-react';
 import { ReactNode } from 'react';
 

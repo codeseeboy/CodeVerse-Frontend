@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Terminal, BookOpen, Zap, Lightbulb, FileCode } from 'lucide-react';
-import { ReactNode, useState } from 'react';
+import { ArrowRight, FileCode } from 'lucide-react';
+import { useState } from 'react';
 import { PageHeader } from '@/components/PageHeader';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { tutorials } from '@/data/tutorialData';
@@ -11,18 +11,6 @@ const languageOptions = [
   { label: 'JavaScript', value: 'javascript' },
   { label: 'Java', value: 'java' },
 ];
-
-interface Tutorial {
-  id: string;
-  title: string;
-  description: string;
-  icon: ReactNode;
-  code: {
-    python: string;
-    javascript: string;
-    java: string;
-  };
-}
 
 export default function Tutorials() {
   const [language, setLanguage] = useState('python');
